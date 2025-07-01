@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import type { IBook } from "@/type/type";
 import { useState } from "react";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
+import { useDeleteBookMutation } from "@/redux/api/baseApi";
 
 interface BookProps {
     book: IBook;
@@ -10,9 +12,10 @@ interface BookProps {
     onBorrow?: (updatedBook: IBook) => void;
 }
 
-const Card = ({ book, onEdit, onDelete, onBorrow }: BookProps) => {
+const Card = ({ book, onEdit, onBorrow }: BookProps) => {
     const [copies, setCopies] = useState(book?.copies);
     const [available, setAvailable] = useState(book?.available);
+    const [deleteBook] = useDeleteBookMutation();
 
     const handleBorrow = () => {
         if (copies <= 0) return;
@@ -25,6 +28,27 @@ const Card = ({ book, onEdit, onDelete, onBorrow }: BookProps) => {
 
         const updatedBook = { ...book, copies: updatedCopies, available: isAvailable };
         onBorrow?.(updatedBook);
+    };
+
+    const handleDelete = async (id: string) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await deleteBook(id).unwrap();
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "The book has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
     };
 
     return (
@@ -64,7 +88,7 @@ const Card = ({ book, onEdit, onDelete, onBorrow }: BookProps) => {
                     {/* Delete Button */}
                     <Button
                         className="px-4 py-2 rounded-md cursor-pointer bg-red-500 text-white hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300"
-                        onClick={() => onDelete?.(book._id)}
+                        onClick={() => handleDelete(book?._id)}
                     >
                         Delete
                     </Button>
