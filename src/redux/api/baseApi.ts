@@ -4,7 +4,7 @@ export const baseApi = createApi({
     reducerPath: "baseApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
     endpoints: (builder) => ({
-        addBook: builder.mutation({
+        createBook: builder.mutation({
             query: (data) => ({
                 url: "/",
                 method: "POST",
@@ -13,3 +13,5 @@ export const baseApi = createApi({
         })
     })
 });
+
+export const { useCreateBookMutation } = baseApi;
