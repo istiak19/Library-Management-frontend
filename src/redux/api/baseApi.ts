@@ -1,3 +1,4 @@
+import type { IBook } from '@/type/type';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const baseApi = createApi({
@@ -19,11 +20,11 @@ export const baseApi = createApi({
             }),
             providesTags: (id) => [{ type: 'books', id }],
         }),
-        createBook: builder.mutation<void, string>({
-            query: (data) => ({
-                url: "/",
+        createBook: builder.mutation<IBook, IBook>({
+            query: (bookData) => ({
+                url: "/books",
                 method: "POST",
-                body: data
+                body: bookData
             }),
             invalidatesTags: ["books"],
         }),
