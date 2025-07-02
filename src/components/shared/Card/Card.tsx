@@ -1,33 +1,26 @@
 import { Button } from "@/components/ui/button";
 import type { IBook } from "@/type/type";
-import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { useDeleteBookMutation } from "@/redux/api/baseApi";
 
 interface BookProps {
     book: IBook;
-    onEdit?: (book: IBook) => void;
-    onDelete?: (id: string) => void;
-    onBorrow?: (updatedBook: IBook) => void;
 }
 
-const Card = ({ book, onBorrow }: BookProps) => {
-    const [copies, setCopies] = useState(book?.copies);
-    const [available, setAvailable] = useState(book?.available);
+const Card = ({ book }: BookProps) => {
+    const navigate = useNavigate();
+    // const [copies, setCopies] = useState(book?.copies);
+    // const [available, setAvailable] = useState(book?.available);
     const [deleteBook] = useDeleteBookMutation();
 
-    const handleBorrow = () => {
-        if (copies <= 0) return;
-
-        const updatedCopies = copies - 1;
-        const isAvailable = updatedCopies > 0;
-
-        setCopies(updatedCopies);
-        setAvailable(isAvailable);
-
-        const updatedBook = { ...book, copies: updatedCopies, available: isAvailable };
-        onBorrow?.(updatedBook);
+    const handleBorrow = (id: string) => {
+        // if (copies <= 0) return;
+        // const updatedCopies = copies - 1;
+        // const isAvailable = updatedCopies > 0;
+        // setCopies(updatedCopies);
+        // setAvailable(isAvailable);
+        navigate(`/borrow/${id}`);
     };
 
     const handleDelete = async (id: string) => {
@@ -58,10 +51,10 @@ const Card = ({ book, onBorrow }: BookProps) => {
                 <p><span className="font-medium">Author:</span> {book?.author}</p>
                 <p><span className="font-medium">Genre:</span> {book?.genre}</p>
                 <p><span className="font-medium">ISBN:</span> {book?.isbn}</p>
-                <p><span className="font-medium">Copies:</span> {copies}</p>
+                <p><span className="font-medium">Copies:</span> {book?.copies}</p>
                 <p>
                     <span className="font-medium">Status:</span>{" "}
-                    {available ? (
+                    {book?.available ? (
                         <span className="text-green-600 font-semibold">Available</span>
                     ) : (
                         <span className="text-red-500 font-semibold">Unavailable</span>
@@ -94,9 +87,9 @@ const Card = ({ book, onBorrow }: BookProps) => {
 
                     {/* Borrow Button */}
                     <Button
-                        className={`px-4 py-2 rounded-md cursor-pointer text-white ${available ? "bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500" : "bg-gray-400 cursor-not-allowed"}`}
-                        onClick={handleBorrow}
-                        disabled={!available}
+                        className={`px-4 py-2 rounded-md cursor-pointer text-white ${book?.available ? "bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500" : "bg-gray-400 cursor-not-allowed"}`}
+                        onClick={() => handleBorrow(book?._id)}
+                        disabled={!book?.available}
                     >
                         Borrow
                     </Button>
