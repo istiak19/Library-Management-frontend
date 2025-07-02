@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 import logoPic from "../../assets/logo.png";
+import { IoMdSearch } from "react-icons/io";
+import { GiShoppingCart } from "react-icons/gi";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,14 +31,13 @@ const NavBar = () => {
             <span className="text-blue-500 font-bold text-xl">BookBase</span>
           </NavLink>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex">
+          {/* Desktop Menu*/}
+          <div className="hidden lg:flex items-center space-x-6">
             <ul className="flex space-x-6 items-center">{links}</ul>
-          </div>
-
-          {/* Login Button */}
-          <div className="hidden lg:flex">
-            <button className="btn btn-outline rounded-md">Login</button>
+            <div className="flex space-x-4 text-2xl text-gray-600 cursor-pointer">
+              <GiShoppingCart title="Cart" className="hover:text-blue-500 transition" />
+              <IoMdSearch title="Search" className="hover:text-blue-500 transition" />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
