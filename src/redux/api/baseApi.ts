@@ -8,7 +8,7 @@ interface IUpdateBookArgs {
 
 export const baseApi = createApi({
     reducerPath: "baseApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://library-backend-chi.vercel.app/api" }),
     tagTypes: ["books", "borrows"],
     endpoints: (builder) => ({
         getAllBook: builder.query({
