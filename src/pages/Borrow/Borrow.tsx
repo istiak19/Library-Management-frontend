@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import type { IBorrow } from "@/type/type";
 import { Calendar } from "@/components/ui/calendar";
+import Loading from "@/components/shared/Loading/Loading";
 
 const Borrow = () => {
     const { bookId } = useParams();
@@ -44,8 +45,14 @@ const Borrow = () => {
         form.reset();
     };
 
-    if (isLoading) return <p className="text-center mt-10 text-xl">Loading...</p>;
-    if (isError || !book) return <p className="text-red-500 text-center mt-10 text-xl">Failed to load book.</p>;
+    if (isLoading) return <Loading />;
+    if (isError || !book) {
+        return (
+            <p className="text-red-500 text-center mt-10 text-3xl font-semibold">
+                Failed to load book.
+            </p>
+        );
+    };
 
     return (
         <div className="py-10 px-4 sm:px-6 lg:px-8">

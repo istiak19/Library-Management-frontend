@@ -14,3 +14,12 @@ export interface IBorrow {
     quantity: number,
     dueDate: Date
 }
+
+export interface IAllBorrow {
+    _id: string,
+    book: {
+        title: string,
+        isbn: string,
+    },
+    totalQuantity: number
+}
