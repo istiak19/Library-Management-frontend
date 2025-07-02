@@ -29,14 +29,14 @@ This project allows for efficient tracking and management of books in a library 
 
 ## ✨ Features
 
-* 📄 **Book List Table**: View all books with key details like title, author, genre, and availability.
-* ➕ **Add Book**: Create new book entries with validations.
-* ✏️ **Edit Book**: Update book details using a pre-filled form.
-* ❌ **Delete Book**: Remove a book with confirmation.
-* 📥 **Borrow Book**: Borrow books with due dates and quantity tracking.
-* 📊 **Borrow Summary**: Aggregated view of borrowed books and their quantities.
-* 🔄 **Real-time Updates**: UI reflects state changes instantly after any CRUD operation.
-* ⚙️ Built with Radix UI, Redux Toolkit, TailwindCSS, and TypeScript.
+* **Book List Table**: View all books with key details like title, author, genre, and availability.
+* **Add Book**: Create new book entries with validations.
+* **Edit Book**: Update book details using a pre-filled form.
+* **Delete Book**: Remove a book with confirmation.
+* **Borrow Book**: Borrow books with due dates and quantity tracking.
+* **Borrow Summary**: Aggregated view of borrowed books and their quantities.
+* **Real-time Updates**: UI reflects state changes instantly after any CRUD operation.
+* Built with Radix UI, Redux Toolkit, TailwindCSS, and TypeScript.
 
 ---
 
