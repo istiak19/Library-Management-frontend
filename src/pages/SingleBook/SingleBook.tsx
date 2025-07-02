@@ -30,9 +30,9 @@ const SingleBook = () => {
                     <p><span className="font-semibold">Description:</span> {book?.data?.description}</p>
                     <p><span className="font-semibold">Copies:</span> {book?.data?.copies}</p>
                     <p>
-                        <span className="font-semibold">Available:</span>{" "}
+                        <span className="font-semibold">Availability:</span>{" "}
                         <span className={book?.data?.available ? "text-green-600 font-semibold" : "text-red-500 font-semibold"}>
-                            {book?.data?.available ? "Yes" : "No"}
+                            {book?.data?.available ? "Available" : "Unavailable"}
                         </span>
                     </p>
                     <p><span className="font-semibold">Created At:</span> {new Date(book?.data?.createdAt).toLocaleString()}</p>

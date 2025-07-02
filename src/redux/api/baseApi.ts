@@ -62,7 +62,7 @@ export const baseApi = createApi({
                 method: "POST",
                 body: borrowData
             }),
-            invalidatesTags: ["borrows"],
+            invalidatesTags: ["books", "borrows"],
         }),
     })
 });
