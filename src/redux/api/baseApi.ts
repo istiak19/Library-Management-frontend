@@ -1,4 +1,4 @@
-import type { IBook } from '@/type/type';
+import type { IBook, IBorrow } from '@/type/type';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 interface IUpdateBookArgs {
@@ -9,7 +9,7 @@ interface IUpdateBookArgs {
 export const baseApi = createApi({
     reducerPath: "baseApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
-    tagTypes: ["books"],
+    tagTypes: ["books", "borrows"],
     endpoints: (builder) => ({
         getAllBook: builder.query({
             query: () => ({
@@ -48,7 +48,23 @@ export const baseApi = createApi({
             }),
             invalidatesTags: [{ type: 'books' }]
         }),
+        // Borrow part
+        getAllBorrow: builder.query({
+            query: () => ({
+                url: "/borrow",
+                method: "GET"
+            }),
+            providesTags: ["borrows"],
+        }),
+        createBorrow: builder.mutation<IBorrow, IBorrow>({
+            query: (borrowData) => ({
+                url: "/borrow",
+                method: "POST",
+                body: borrowData
+            }),
+            invalidatesTags: ["borrows"],
+        }),
     })
 });
 
-export const { useGetAllBookQuery, useGetSingleBookQuery, useCreateBookMutation, useUpdateBookMutation, useDeleteBookMutation } = baseApi;
+export const { useGetAllBookQuery, useGetSingleBookQuery, useCreateBookMutation, useUpdateBookMutation, useDeleteBookMutation, useGetAllBorrowQuery, useCreateBorrowMutation } = baseApi;

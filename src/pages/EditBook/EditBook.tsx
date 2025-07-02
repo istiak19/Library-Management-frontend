@@ -54,11 +54,11 @@ const EditBook = () => {
             });
             navigate("/books");
         } catch (error: any) {
-            let errorMessage = "Something went wrong!";
+            let errorMessage;
             if (error?.data?.error?.code === 11000) {
                 errorMessage = "This ISBN already exists!";
-            } else if (error?.message) {
-                errorMessage = error.message;
+            } else if (error?.data?.error?.message) {
+                errorMessage = error?.data?.error?.errors?.copies?.message;
             }
 
             Swal.fire({
