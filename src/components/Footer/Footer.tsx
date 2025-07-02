@@ -11,7 +11,7 @@ const Footer = () => {
                     <div>
                         <div className="flex items-center gap-3">
                             <img src={logoPic} alt="BookBase Logo" className="w-14 h-14" />
-                            <h2 className="text-3xl font-bold text-black">BookBase</h2>
+                            <h2 className="text-3xl font-bold text-blue-500">BookBase</h2>
                         </div>
                         <p className="mt-3 text-black text-sm leading-relaxed">
                             Empowering readers with accessible knowledge and learning.
@@ -53,8 +53,8 @@ const Footer = () => {
                 </div>
 
                 {/* Divider & Copyright */}
-                <div className="mt-10 border-t border-gray-300 pt-6 text-center text-sm text-black">
-                    © {new Date().getFullYear()} <span className="font-semibold">BookBase</span>. All rights reserved.
+                <div className="mt-10 border-t border-blue-300 pt-6 text-center text-sm text-black">
+                    © {new Date().getFullYear()} <span className="font-semibold text-blue-500">BookBase</span>. All rights reserved.
                 </div>
             </div>
         </footer>

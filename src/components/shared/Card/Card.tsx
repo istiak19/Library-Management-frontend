@@ -10,16 +10,9 @@ interface BookProps {
 
 const Card = ({ book }: BookProps) => {
     const navigate = useNavigate();
-    // const [copies, setCopies] = useState(book?.copies);
-    // const [available, setAvailable] = useState(book?.available);
     const [deleteBook] = useDeleteBookMutation();
 
     const handleBorrow = (id: string) => {
-        // if (copies <= 0) return;
-        // const updatedCopies = copies - 1;
-        // const isAvailable = updatedCopies > 0;
-        // setCopies(updatedCopies);
-        // setAvailable(isAvailable);
         navigate(`/borrow/${id}`);
     };
 

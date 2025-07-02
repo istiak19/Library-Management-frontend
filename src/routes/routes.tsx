@@ -6,12 +6,17 @@ import CreateBook from "@/pages/CreateBook/CreateBook";
 import SingleBook from "@/pages/SingleBook/SingleBook";
 import BorrowSummary from "@/pages/BorrowSummary/BorrowSummary";
 import Borrow from "@/pages/Borrow/Borrow";
+import Home from "@/pages/Home/Home";
 
 const router = createBrowserRouter([
     {
         path: "/",
         Component: App,
         children: [
+            {
+                index: true,
+                Component: Home
+            },
             {
                 path: "/books",
                 Component: AllBooks
