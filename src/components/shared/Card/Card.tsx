@@ -12,7 +12,7 @@ interface BookProps {
     onBorrow?: (updatedBook: IBook) => void;
 }
 
-const Card = ({ book, onEdit, onBorrow }: BookProps) => {
+const Card = ({ book, onBorrow }: BookProps) => {
     const [copies, setCopies] = useState(book?.copies);
     const [available, setAvailable] = useState(book?.available);
     const [deleteBook] = useDeleteBookMutation();
@@ -60,11 +60,11 @@ const Card = ({ book, onEdit, onBorrow }: BookProps) => {
                 <p><span className="font-medium">ISBN:</span> {book?.isbn}</p>
                 <p><span className="font-medium">Copies:</span> {copies}</p>
                 <p>
-                    <span className="font-medium">Available:</span>{" "}
+                    <span className="font-medium">Status:</span>{" "}
                     {available ? (
-                        <span className="text-green-600 font-semibold">Yes</span>
+                        <span className="text-green-600 font-semibold">Available</span>
                     ) : (
-                        <span className="text-red-500 font-semibold">No</span>
+                        <span className="text-red-500 font-semibold">Unavailable</span>
                     )}
                 </p>
 
@@ -78,12 +78,11 @@ const Card = ({ book, onEdit, onBorrow }: BookProps) => {
                     </Link>
 
                     {/* Edit Button */}
-                    <Button
+                    <Link to={`/edit-book/${book?._id}`}
                         className="px-4 py-2 rounded-md cursor-pointer bg-yellow-500 text-white hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300"
-                        onClick={() => onEdit?.(book)}
                     >
                         Edit
-                    </Button>
+                    </Link>
 
                     {/* Delete Button */}
                     <Button
