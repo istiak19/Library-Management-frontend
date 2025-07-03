@@ -28,7 +28,7 @@ const BorrowSummary = () => {
                 Borrow Summary
             </h2>
 
-            <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm bg-white">
+            <div className="overflow-x-auto rounded-lg border border-x-4 border-blue-200 shadow-2xl bg-white">
                 <Table className="w-full text-sm text-gray-700">
                     <TableHeader className="bg-blue-100">
                         <TableRow>
