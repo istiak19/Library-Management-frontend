@@ -44,10 +44,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-3 text-black">Follow Us</h3>
                         <div className="flex items-center gap-4 mt-2 flex-wrap">
-                            <a href="#" className="text-xl text-black hover:text-blue-600 transition-colors"><FaFacebookF /></a>
-                            <a href="#" className="text-xl text-black hover:text-blue-600 transition-colors"><FaTwitter /></a>
-                            <a href="#" className="text-xl text-black hover:text-blue-600 transition-colors"><FaLinkedinIn /></a>
-                            <a href="#" className="text-xl text-black hover:text-blue-600 transition-colors"><FaInstagram /></a>
+                            <a href="#" className="text-xl text-blue-400 hover:text-blue-600 transition-colors"><FaFacebookF /></a>
+                            <a href="#" className="text-xl text-blue-400 hover:text-blue-600 transition-colors"><FaTwitter /></a>
+                            <a href="#" className="text-xl text-blue-400 hover:text-blue-600 transition-colors"><FaLinkedinIn /></a>
+                            <a href="#" className="text-xl hover:text-blue-600 transition-colors text-red-400"><FaInstagram /></a>
                         </div>
                     </div>
                 </div>
